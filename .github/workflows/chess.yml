@@ -128,7 +128,7 @@ jobs:
           gh issue close ${{ github.event.issue.number }}
 
           # create new issue as timburgan PAT with `chess|new`
-          gh auth logout
+          gh auth logout --hostname github.com
           echo "${{ secrets.TIMBURGAN_PAT_NEW_ISSUE }}" | gh auth login --with-token
           gh issue create --title "chess|new" --body "See #${{ github.event.issue.number }}" --repo ${{ github.repository }}
 
